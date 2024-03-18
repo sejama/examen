@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Provincia index{% endblock %}
+
+{% block body %}
+    <h1>Provincia index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripción</th>
+                <th></th>
+                <th>Acciones</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for provincia in provincias %}
+            <tr>
+                <td>{{ provincia.id }}</td>
+                <td>{{ provincia.descripcion }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_provincia_show', {'id': provincia.id}) }}" role="button">Ver</a>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_provincia_edit', {'id': provincia.id}) }}" role="button">Editar</a>
+                </td>
+                <td>
+                    {{ include('provincia/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('app_provincia_new') }}" role="button">Nuevo</a>
+    <a class="btn btn-outline-primary" href="{{ path('app_app') }}" role="button">Volver</a>
+{% endblock %}

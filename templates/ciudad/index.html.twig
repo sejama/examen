@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ciudades{% endblock %}
+
+{% block body %}
+    <h1>Ciudades</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descripcion</th>
+                <th>Provincia</th>
+                <th></th>
+                <th>Acciones</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ciudad in ciudads %}
+            <tr>
+                <td>{{ ciudad.id }}</td>
+                <td>{{ ciudad.descripcion }}</td>
+                <td>{{ ciudad.provincia.descripcion }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_ciudad_show', {'id': ciudad.id}) }}" role="button">Ver</a>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_ciudad_edit', {'id': ciudad.id}) }}" role="button">Editar</a>
+                </td>
+                <td>
+                    {{ include('ciudad/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('app_ciudad_new') }}" role="button">Nuevo</a>
+    <a class="btn btn-outline-primary" href="{{ path('app_app') }}" role="button">Volver</a>
+{% endblock %}

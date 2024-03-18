@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Provincia{% endblock %}
+
+{% block body %}
+    <h1>Create new Provincia</h1>
+
+    {{ include('provincia/_form.html.twig') }}
+    <a class="btn btn-outline-primary" href="{{ path('app_provincia_index') }}" role="button">Volver</a>
+{% endblock %}
